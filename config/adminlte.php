@@ -260,8 +260,8 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Deudores',
+                    'url'  => 'admin/customers',
                 ],
                 [
                     'text'    => 'level_one',
