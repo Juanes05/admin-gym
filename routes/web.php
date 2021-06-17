@@ -21,7 +21,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
     return view('admin');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/admin/customers', function () {
-    return view('admin.people');
-})->name('customers');
+
 

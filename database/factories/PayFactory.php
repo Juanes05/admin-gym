@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use App\Models\Pay;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +25,7 @@ class PayFactory extends Factory
         return [
             'pay' => 60000,
             'pay_reference' => $this->faker->numberBetween(500,1000),
-            'user_id' => rand(1,5),
+            'customer_id' => Customer::factory(),
         ];
     }
 }
