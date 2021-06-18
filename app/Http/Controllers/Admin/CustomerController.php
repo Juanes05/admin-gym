@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
@@ -14,7 +15,12 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.people',
+        [
+            'customers' => Customer::all()
+        ]
+        
+        );
     }
 
     /**
@@ -35,7 +41,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+
+            'name' => 'required',
+            'document' => 'required',
+        ]);
+
+       Customer::create($request->all());
+
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -55,9 +70,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Customer $customer)
     {
-        //
+        
+       
+        return view('admin.customers-edit',compact('customer'));
     }
 
     /**
@@ -67,9 +84,17 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
-        //
+  $request->validate([
+
+            'name' => 'required',
+            'document' => 'required',
+        ]);
+
+        $customer->update($request->all());
+
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -78,8 +103,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return redirect()->route('customers.index');
+    
     }
 }

@@ -14,6 +14,12 @@ class CustomerFactory extends Factory
      */
     protected $model = Customer::class;
 
+
+    protected $fillable =[
+
+        'name','lastname','document','state'
+    ];
+
     /**
      * Define the model's default state.
      *
