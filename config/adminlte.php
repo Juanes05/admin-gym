@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin/customers',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -256,29 +256,24 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
 
-        ['header' => 'LISTAS'],
+     
+       
+
+        ['header' => 'USUARIOS'],
+
         [
-            'text'    => 'Usuarios',
+            'text'    => 'Listar usuarios',
             'icon'    => 'fa fa-users',
             'url'  => 'admin/customers',
             
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Agregar usuario',
+            'icon'    => 'fa fa-users',
+            'url'  => 'admin/customers/create',
+            
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+       
     ],
 
     /*
@@ -317,7 +312,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -384,6 +379,18 @@ return [
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
                 ],
+            ],
+        ],
+
+        'lang' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'json',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json',
+                ],
+              
             ],
         ],
     ],

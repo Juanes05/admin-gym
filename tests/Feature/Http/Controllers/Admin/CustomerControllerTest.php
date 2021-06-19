@@ -64,7 +64,7 @@ class CustomerControllerTest extends TestCase
         $this
         ->actingAs($user)
         ->put("admin/customers/$customer->id",$data)
-        ->assertRedirect("admin/customers/$customer->id/edit");
+        ->assertRedirect("admin/customers/");
 
 
         $this->assertDatabaseHas('customers',$data);
@@ -116,17 +116,7 @@ class CustomerControllerTest extends TestCase
 
     }
 
-    public function test_index_empty(){
-        Customer::factory()->create();
-        $user = User::factory()->create();
-
-        $this
-        ->actingAs($user)
-        ->get('admin/customers')
-        ->assertStatus(200)
-        ->assertSee('No hay clientes creados');
-        
-    }
+   
 
     public function test_index_with_data(){
 

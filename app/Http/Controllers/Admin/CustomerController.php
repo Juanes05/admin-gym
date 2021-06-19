@@ -30,7 +30,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.customer-create');
     }
 
     /**
@@ -44,8 +44,8 @@ class CustomerController extends Controller
 
         $request->validate([
 
-            'name' => 'required',
-            'document' => 'required',
+            'name' => ['required','max:255'],
+            'document' => ['required','unique:customers','numeric'],
         ]);
 
        Customer::create($request->all());

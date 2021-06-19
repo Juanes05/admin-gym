@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('document')->unique();
-            $table->boolean('state');
+            $table->boolean('state')->default(0);
             $table->timestamps();
         });
     }
