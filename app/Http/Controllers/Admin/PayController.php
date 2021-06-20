@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pay;
 use Illuminate\Http\Request;
-use App\Models\Customer;
 
-class CustomerController extends Controller
+class PayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('admin.people',
+        return view('admin.pays',
         [
-            'customers' => Customer::all()
+            'pays' => Pay::with('customer')->get()
         ]
         
         );
@@ -30,7 +30,12 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('admin.customer-create');
+        //return view('admin.pay-create');
+    }
+
+    public function create_by_id($customer_id)
+    {
+        return view('admin.pay-create',compact('customer_id'));
     }
 
     /**
@@ -41,16 +46,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
 
-            'name' => ['required','max:255'],
-            'document' => ['required','unique:customers','numeric'],
+            'pay' => 'numeric',
+            'pay_reference'  => 'unique:pays'
+            
         ]);
 
-       Customer::create($request->all());
+       Pay::create($request->all());
 
-        return redirect()->route('customers.index')->with('status', 'Usuario creado');
+        return redirect()->route('pays.index')->with('status', 'Pago Agregado');
     }
 
     /**
@@ -70,11 +75,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Customer $customer)
+    public function edit(Request $request,Pay $pay)
     {
-        
-       
-        return view('admin.customers-edit',compact('customer'));
+        return view('admin.pay-edit',compact('pay'));
     }
 
     /**
@@ -84,31 +87,13 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Pay $pay)
     {
-  $request->validate([
-
-            'name' => 'required',
-            'document' => 'required',
-        ]);
-
-        $customer->update($request->all());
-
-        return redirect()->route('customers.index');
-    }
-
-
-    public function showPays($customer_id)
-    {
-
-        $customer = new Customer();
       
-        $customer = $customer->with('pays')->findOrFail($customer_id);
 
-       
-        return view('admin.customer-pays-show',compact('customer'));
+        $pay->update($request->all());
 
-
+        return redirect()->route('pays.index')->with('status', 'Pago Actualizado');
     }
 
     /**
@@ -117,12 +102,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Pay $pay)
     {
-        $customer->pays()->delete();
-        $customer->delete();
+       
+        $pay->delete();
 
-        return redirect()->route('customers.index')->with('status_destroy', 'Usuario Eliminado');;
-    
+        return redirect()->route('pays.index')->with('status_destroy', 'Pago Eliminado');
     }
 }

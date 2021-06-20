@@ -3,7 +3,7 @@
 @section('title', 'CLIENTES')
 
 @section('content_header')
-    <h1>Clientes</h1>
+    <h1>Lista de Usuarios</h1>
 @stop
 
 @php
@@ -63,22 +63,24 @@ $config = [
         
   
         <td>
+
+        
             
             <a href="{{route('customers.edit',$customer) }}" class="btn btn-dark"> 
                 
                 
-                Editar
+                <i class="fa fa-lg fa-fw fa-pen" title="Editar usuario"></i>
                 
             </a>
             
-            <a href="#" class="btn btn-success"> 
+            <a href="{{route('create-by-id',$customer->id)}}" class="btn btn-success"> 
                 
                 
                 Agregar pago
                 
             </a>
             
-            <a href="#" class="btn btn-info"> 
+            <a href="{{route('show-pays-by-id',$customer->id)}}" class="btn btn-info"> 
                 
                 
                 Ver pagos
@@ -88,28 +90,41 @@ $config = [
             <form class="mt-3" action="{{ route('customers.destroy', $customer)}}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
-                <div class="form-group">
+             
                     
-                    <input type="submit" class="btn btn-danger delete-user" value="Borrar usuario">
-                </div>
+                    <button class="btn btn-default text-danger mx-1 shadow" title="Borrar usuario">
+                        <i class="fa fa-lg fa-fw fa-trash"></i>
+            
                 
             </form>
             
             
             
-            
+                
         </td>
         
     </tr>
 
 
- 
-  
    
 
 
         
     @endforeach
+
+    
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+@if (session('status_destroy'))
+<div class="alert alert-warning">
+    {{ session('status_destroy') }}
+</div>
+@endif
+  
 
 </x-adminlte-datatable>
 

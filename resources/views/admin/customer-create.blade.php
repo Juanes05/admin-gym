@@ -22,7 +22,7 @@
             @method('POST')
             
             <label class="mt-2"> Nombre </label>
-            <input class="form-control w-50 rounded-md shadow-sm" type="text" name="name"  required=true>
+            <input class="form-control w-50 rounded-md shadow-sm" type="text" name="name"  required=true >
 
                     
             <label class="mt-2" > Apellido</label>

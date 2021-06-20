@@ -262,18 +262,30 @@ return [
         ['header' => 'USUARIOS'],
 
         [
-            'text'    => 'Listar usuarios',
-            'icon'    => 'fa fa-users',
-            'url'  => 'admin/customers',
-            
-        ],
-        [
             'text'    => 'Agregar usuario',
             'icon'    => 'fa fa-users',
             'url'  => 'admin/customers/create',
             
         ],
        
+
+        [
+            'text'    => 'Listar usuarios',
+            'icon'    => 'fa fa-users',
+            'url'  => 'admin/customers',
+            
+        ],
+
+      
+
+        [
+            'text'    => 'Mensualidades',
+            'icon'    => 'fa fa-users',
+            'url'  => 'admin/pays',
+            
+        ],
+       
+      
     ],
 
     /*

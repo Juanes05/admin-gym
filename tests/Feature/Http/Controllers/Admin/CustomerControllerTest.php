@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Customer;
+use App\Models\Pay;
 use App\Models\User;
 
 class CustomerControllerTest extends TestCase
@@ -164,6 +165,33 @@ class CustomerControllerTest extends TestCase
 
       
         
+        
+    }
+
+    public function test_index_pays_by_customer_id()
+    {
+
+
+        $user = User::factory()->create();
+        $customer =  Customer::factory()->create();
+         Pay::factory()->create([
+
+            'customer_id' => $customer->id
+        ]);
+        
+        
+
+
+        $this
+        ->actingAs($user)
+        ->get("admin/customer/pays/show/$customer->id")
+        ->assertStatus(200)
+        ->assertSee($customer->name)
+        ->assertSee($customer->document);
+        
+        
+       
+
         
     }
 }

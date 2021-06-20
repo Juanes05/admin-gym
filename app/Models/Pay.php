@@ -10,6 +10,12 @@ class Pay extends Model
     use HasFactory;
 
 
+    protected $fillable =[
+
+        'customer_id','pay','pay_reference'
+    ];
+
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);
