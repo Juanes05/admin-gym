@@ -7,7 +7,7 @@
 @stop
 
 @php
-    $heads = ['ID','NOMBRE', 'APELLIDO','DOCUMENTO','ESTADO',
+    $heads = ['NOMBRE', 'APELLIDO','DOCUMENTO','ESTADO',
 
     ['label'=> 'OPCIONES','no-export'=> true],
 ];
@@ -15,8 +15,8 @@
     
 $config = [
   
-    'order' => [[1, 'asc']],
-    'columns' => [null, null, null, null,null, ['orderable' => false]],
+    'order' => [[0, 'asc']],
+    'columns' => [null, null, null,null, ['orderable' => false]],
 ];
 @endphp
 @section('content')
@@ -27,9 +27,7 @@ $config = [
 
    
     <tr>
-        <td>
-            {{ $customer->id }}
-        </td>
+     
    
 
    

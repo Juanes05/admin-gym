@@ -22,10 +22,10 @@
             @method('POST')
 
             <label class="mt-2"> Cliente</label>
-            <input class="form-control w-50 rounded-md shadow-sm" type="numeric" name="customer_id"  hidden=true value="{{$customer_id}}">
+            <input class="form-control w-50 rounded-md shadow-sm" type="number" name="customer_id"  hidden=true value="{{$customer_id}}">
             
             <label class="mt-2"> Pago $ </label>
-            <input class="form-control w-50 rounded-md shadow-sm" type="numeric" name="pay"  required=true>
+            <input class="form-control w-50 rounded-md shadow-sm" type="number" name="pay"  required=true value="60000">
 
                     
             <label class="mt-2" >Referencia de Pago</label>

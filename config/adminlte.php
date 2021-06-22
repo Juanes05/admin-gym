@@ -65,7 +65,7 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -226,15 +226,10 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+      
+
+
+
 
         // Sidebar items:
       
@@ -256,6 +251,16 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
 
+        ['header' => 'NOTIFICACIONES'],
+
+        [
+            'text'    => 'Mensualidades Vencidas',
+            'icon'    => 'fa fa-exclamation-triangle',
+            'url'  => 'admin/inactive/customers',
+            'classes' =>  'text-danger',
+            
+        ],
+
      
        
 
@@ -263,7 +268,7 @@ return [
 
         [
             'text'    => 'Agregar usuario',
-            'icon'    => 'fa fa-users',
+            'icon'    => 'fa fa-user',
             'url'  => 'admin/customers/create',
             
         ],
@@ -273,6 +278,7 @@ return [
             'text'    => 'Listar usuarios',
             'icon'    => 'fa fa-users',
             'url'  => 'admin/customers',
+          
             
         ],
 
@@ -280,10 +286,13 @@ return [
 
         [
             'text'    => 'Mensualidades',
-            'icon'    => 'fa fa-users',
+            'icon'    => 'fa fa-shopping-cart',
             'url'  => 'admin/pays',
             
         ],
+
+     
+       
        
       
     ],

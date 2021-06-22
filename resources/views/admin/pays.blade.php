@@ -7,7 +7,7 @@
 @stop
 
 @php
-    $heads = ['ID','NOMBRE', 'DOCUMENTO','ÚLTIMO PAGO','FECHA PAGO',
+    $heads = ['ID','NOMBRE', 'DOCUMENTO','TOTAL','REFERENCIA DE PAGO','FECHA INICIO', 'FECHA FIN',
 
     ['label'=> 'OPCIONES','no-export'=> true],
 ];
@@ -45,12 +45,22 @@
         <td>
        @money($pay->pay,'COP')
         </td>
+
+        <td>
+            {{ $pay->pay_reference}}
+        </td>
+        
         
         <td>
-            {{ $pay->created_at}}
+            {{ $pay->created_at->format('Y-m-d')}}
         </td>
         
   
+           
+        <td>
+            {{ $pay->end_date}}
+        </td>
+        
     
         
   

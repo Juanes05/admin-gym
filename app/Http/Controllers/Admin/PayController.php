@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pay;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 
 class PayController extends Controller
@@ -15,6 +17,9 @@ class PayController extends Controller
      */
     public function index()
     {
+        
+        Pay::updateCustomerState();
+
         return view('admin.pays',
         [
             'pays' => Pay::with('customer')->get()
@@ -52,6 +57,14 @@ class PayController extends Controller
             'pay_reference'  => 'unique:pays'
             
         ]);
+
+        $endDate = Carbon::now()->addDays(30);
+        $endDate=$endDate->format('Y-m-d');
+        
+        $request->request->add(['end_date' => $endDate]);
+        
+
+    
 
        Pay::create($request->all());
 

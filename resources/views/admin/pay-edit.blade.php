@@ -24,7 +24,7 @@
      
             
             <label class="mt-2"> Pago $ </label>
-            <input class="form-control w-50 rounded-md shadow-sm" type="numeric" name="pay"  required=true value="{{$pay->pay}}">
+            <input class="form-control w-50 rounded-md shadow-sm" type="number" name="pay"  required=true value="{{$pay->pay}}">
 
                     
             <label class="mt-2" >Referencia de Pago</label>

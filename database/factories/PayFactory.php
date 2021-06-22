@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Customer;
 use App\Models\Pay;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PayFactory extends Factory
@@ -26,6 +27,7 @@ class PayFactory extends Factory
             'pay' => 60000,
             'pay_reference' => $this->faker->numberBetween(500,1000),
             'customer_id' => Customer::factory(),
+            'end_date' => Carbon::now()->addDays(30)->toDateString()
         ];
     }
 }

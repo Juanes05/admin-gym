@@ -13,3 +13,4 @@ Route::get('pays/create/{id}', [App\Http\Controllers\Admin\PayController::class,
 
 Route::get('customer/pays/show/{id}', [App\Http\Controllers\Admin\CustomerController::class,'showPays'])->middleware('auth')->name('show-pays-by-id');
 
+Route::get('inactive/customers', [App\Http\Controllers\Admin\CustomerController::class,'showInactive'])->middleware('auth')->name('show-inactive');

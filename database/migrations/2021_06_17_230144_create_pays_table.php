@@ -18,8 +18,8 @@ class CreatePaysTable extends Migration
             $table->unsignedBigInteger('customer_id');
 
             $table->integer('pay');
-            $table->integer('pay_reference');
-
+            $table->integer('pay_reference')->nullable();
+            $table->dateTime('end_date');
             $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->timestamps();

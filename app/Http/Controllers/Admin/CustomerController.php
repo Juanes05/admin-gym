@@ -111,6 +111,20 @@ class CustomerController extends Controller
 
     }
 
+    public function showInactive()
+    {
+
+       
+
+        return view('admin.people',
+        [
+            'customers' => Customer::where('state',0)->get()
+        ]
+        
+        );
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
